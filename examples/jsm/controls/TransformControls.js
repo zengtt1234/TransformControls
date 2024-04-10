@@ -810,7 +810,7 @@ class TransformControlsGizmo extends Object3D {
 		const arrowGeometry = new CylinderGeometry( 0, 0.04, 0.1, 12 );
 		arrowGeometry.translate( 0, 0.05, 0 );
 
-		const scaleHandleGeometry = new BoxGeometry( 0.08, 0.08, 0.08 );
+		const scaleHandleGeometry = new BoxGeometry( 0.05, 0.05, 0.05 );
 		scaleHandleGeometry.translate( 0, 0.04, 0 );
 
 		const lineGeometry = new BufferGeometry();
@@ -844,19 +844,19 @@ class TransformControlsGizmo extends Object3D {
 
 		const gizmoTranslate = {
 			X: [
-				[ new Mesh( arrowGeometry, matRed ), [ 0.5, 0, 0 ], [ 0, 0, - Math.PI / 2 ]],
+				[ new Mesh( arrowGeometry, matRed.clone() ), [ 0.5, 0, 0 ], [ 0, 0, - Math.PI / 2 ]],
 				// [ new Mesh( arrowGeometry, matRed ), [ - 0.5, 0, 0 ], [ 0, 0, Math.PI / 2 ]],
-				[ new Mesh( lineGeometry2, matRed ), [ 0, 0, 0 ], [ 0, 0, - Math.PI / 2 ]]
+				[ new Mesh( lineGeometry2, matRed.clone() ), [ 0, 0, 0 ], [ 0, 0, - Math.PI / 2 ]]
 			],
 			Y: [
-				[ new Mesh( arrowGeometry, matGreen ), [ 0, 0.5, 0 ]],
+				[ new Mesh( arrowGeometry, matGreen.clone() ), [ 0, 0.5, 0 ]],
 				// [ new Mesh( arrowGeometry, matGreen ), [ 0, - 0.5, 0 ], [ Math.PI, 0, 0 ]],
-				[ new Mesh( lineGeometry2, matGreen ) ]
+				[ new Mesh( lineGeometry2, matGreen.clone() ) ]
 			],
 			Z: [
-				[ new Mesh( arrowGeometry, matBlue ), [ 0, 0, 0.5 ], [ Math.PI / 2, 0, 0 ]],
+				[ new Mesh( arrowGeometry, matBlue.clone() ), [ 0, 0, 0.5 ], [ Math.PI / 2, 0, 0 ]],
 				// [ new Mesh( arrowGeometry, matBlue ), [ 0, 0, - 0.5 ], [ - Math.PI / 2, 0, 0 ]],
-				[ new Mesh( lineGeometry2, matBlue ), null, [ Math.PI / 2, 0, 0 ]]
+				[ new Mesh( lineGeometry2, matBlue.clone() ), null, [ Math.PI / 2, 0, 0 ]]
 			],
 			// XYZ: [
 			// 	[ new Mesh( new OctahedronGeometry( 0.1, 0 ), matWhiteTransparent.clone() ), [ 0, 0, 0 ]]
@@ -925,13 +925,13 @@ class TransformControlsGizmo extends Object3D {
 			// 	[ new Mesh( CircleGeometry( 0.5, 1 ), matGray ), null, [ 0, Math.PI / 2, 0 ]]
 			// ],
 			X: [
-				[ new Mesh( CircleGeometry( 0.3, 0.25 ), matRed ) ]
+				[ new Mesh( CircleGeometry( 0.3, 0.25 ), matRed.clone() ) ]
 			],
 			Y: [
-				[ new Mesh( CircleGeometry( 0.3, 0.25 ), matGreen ), null, [ 0, 0, - Math.PI / 2 ]]
+				[ new Mesh( CircleGeometry( 0.3, 0.25 ), matGreen.clone() ), null, [ 0, 0, - Math.PI / 2 ]]
 			],
 			Z: [
-				[ new Mesh( CircleGeometry( 0.3, 0.25 ), matBlue ), null, [ 0, Math.PI / 2, 0 ]]
+				[ new Mesh( CircleGeometry( 0.3, 0.25 ), matBlue.clone() ), null, [ 0, Math.PI / 2, 0 ]]
 			],
 			// E: [
 			// 	[ new Mesh( CircleGeometry( 0.75, 1 ), matYellowTransparent ), null, [ 0, Math.PI / 2, 0 ]]
@@ -964,59 +964,59 @@ class TransformControlsGizmo extends Object3D {
 
 		const gizmoScale = {
 			X: [
-				[ new Mesh( scaleHandleGeometry, matRed ), [ 0.5, 0, 0 ], [ 0, 0, - Math.PI / 2 ]],
-				[ new Mesh( lineGeometry2, matRed ), [ 0, 0, 0 ], [ 0, 0, - Math.PI / 2 ]],
-				[ new Mesh( scaleHandleGeometry, matRed ), [ - 0.5, 0, 0 ], [ 0, 0, Math.PI / 2 ]],
+				[ new Mesh( scaleHandleGeometry, matRed.clone() ), [ 0.3, 0, 0 ], [ 0, 0, - Math.PI / 2 ]],
+				// [ new Mesh( lineGeometry2, matRed.clone() ), [ 0, 0, 0 ], [ 0, 0, - Math.PI / 2 ]],
+				// [ new Mesh( scaleHandleGeometry, matRed.clone() ), [ - 0.5, 0, 0 ], [ 0, 0, Math.PI / 2 ]],
 			],
 			Y: [
-				[ new Mesh( scaleHandleGeometry, matGreen ), [ 0, 0.5, 0 ]],
-				[ new Mesh( lineGeometry2, matGreen ) ],
-				[ new Mesh( scaleHandleGeometry, matGreen ), [ 0, - 0.5, 0 ], [ 0, 0, Math.PI ]],
+				[ new Mesh( scaleHandleGeometry, matGreen.clone() ), [ 0, 0.3, 0 ]],
+				// [ new Mesh( lineGeometry2, matGreen.clone() ) ],
+				// [ new Mesh( scaleHandleGeometry, matGreen.clone() ), [ 0, - 0.5, 0 ], [ 0, 0, Math.PI ]],
 			],
 			Z: [
-				[ new Mesh( scaleHandleGeometry, matBlue ), [ 0, 0, 0.5 ], [ Math.PI / 2, 0, 0 ]],
-				[ new Mesh( lineGeometry2, matBlue ), [ 0, 0, 0 ], [ Math.PI / 2, 0, 0 ]],
-				[ new Mesh( scaleHandleGeometry, matBlue ), [ 0, 0, - 0.5 ], [ - Math.PI / 2, 0, 0 ]]
+				[ new Mesh( scaleHandleGeometry, matBlue.clone() ), [ 0, 0, 0.3 ], [ Math.PI / 2, 0, 0 ]],
+				// [ new Mesh( lineGeometry2, matBlue.clone() ), [ 0, 0, 0 ], [ Math.PI / 2, 0, 0 ]],
+				// [ new Mesh( scaleHandleGeometry, matBlue.clone() ), [ 0, 0, - 0.5 ], [ - Math.PI / 2, 0, 0 ]]
 			],
-			XY: [
-				[ new Mesh( new BoxGeometry( 0.15, 0.15, 0.01 ), matBlueTransparent ), [ 0.15, 0.15, 0 ]]
-			],
-			YZ: [
-				[ new Mesh( new BoxGeometry( 0.15, 0.15, 0.01 ), matRedTransparent ), [ 0, 0.15, 0.15 ], [ 0, Math.PI / 2, 0 ]]
-			],
-			XZ: [
-				[ new Mesh( new BoxGeometry( 0.15, 0.15, 0.01 ), matGreenTransparent ), [ 0.15, 0, 0.15 ], [ - Math.PI / 2, 0, 0 ]]
-			],
-			XYZ: [
-				[ new Mesh( new BoxGeometry( 0.1, 0.1, 0.1 ), matWhiteTransparent.clone() ) ],
-			]
+			// XY: [
+			// 	[ new Mesh( new BoxGeometry( 0.15, 0.15, 0.01 ), matBlueTransparent ), [ 0.15, 0.15, 0 ]]
+			// ],
+			// YZ: [
+			// 	[ new Mesh( new BoxGeometry( 0.15, 0.15, 0.01 ), matRedTransparent ), [ 0, 0.15, 0.15 ], [ 0, Math.PI / 2, 0 ]]
+			// ],
+			// XZ: [
+			// 	[ new Mesh( new BoxGeometry( 0.15, 0.15, 0.01 ), matGreenTransparent ), [ 0.15, 0, 0.15 ], [ - Math.PI / 2, 0, 0 ]]
+			// ],
+			// XYZ: [
+			// 	[ new Mesh( new BoxGeometry( 0.1, 0.1, 0.1 ), matWhiteTransparent.clone() ) ],
+			// ]
 		};
 
 		const pickerScale = {
 			X: [
-				[ new Mesh( new CylinderGeometry( 0.2, 0, 0.6, 4 ), matInvisible ), [ 0.3, 0, 0 ], [ 0, 0, - Math.PI / 2 ]],
-				[ new Mesh( new CylinderGeometry( 0.2, 0, 0.6, 4 ), matInvisible ), [ - 0.3, 0, 0 ], [ 0, 0, Math.PI / 2 ]]
+				[ new Mesh( scaleHandleGeometry, matInvisible ), [ 0.3, 0, 0 ], [ 0, 0, - Math.PI / 2 ]],
+				// [ new Mesh( new CylinderGeometry( 0.2, 0, 0.6, 4 ), matInvisible ), [ - 0.3, 0, 0 ], [ 0, 0, Math.PI / 2 ]]
 			],
 			Y: [
-				[ new Mesh( new CylinderGeometry( 0.2, 0, 0.6, 4 ), matInvisible ), [ 0, 0.3, 0 ]],
-				[ new Mesh( new CylinderGeometry( 0.2, 0, 0.6, 4 ), matInvisible ), [ 0, - 0.3, 0 ], [ 0, 0, Math.PI ]]
+				[ new Mesh( scaleHandleGeometry, matInvisible ), [ 0, 0.3, 0 ]],
+				// [ new Mesh( new CylinderGeometry( 0.2, 0, 0.6, 4 ), matInvisible ), [ 0, - 0.3, 0 ], [ 0, 0, Math.PI ]]
 			],
 			Z: [
-				[ new Mesh( new CylinderGeometry( 0.2, 0, 0.6, 4 ), matInvisible ), [ 0, 0, 0.3 ], [ Math.PI / 2, 0, 0 ]],
-				[ new Mesh( new CylinderGeometry( 0.2, 0, 0.6, 4 ), matInvisible ), [ 0, 0, - 0.3 ], [ - Math.PI / 2, 0, 0 ]]
+				[ new Mesh( scaleHandleGeometry, matInvisible ), [ 0, 0, 0.3 ], [ Math.PI / 2, 0, 0 ]],
+				// [ new Mesh( new CylinderGeometry( 0.2, 0, 0.6, 4 ), matInvisible ), [ 0, 0, - 0.3 ], [ - Math.PI / 2, 0, 0 ]]
 			],
-			XY: [
-				[ new Mesh( new BoxGeometry( 0.2, 0.2, 0.01 ), matInvisible ), [ 0.15, 0.15, 0 ]],
-			],
-			YZ: [
-				[ new Mesh( new BoxGeometry( 0.2, 0.2, 0.01 ), matInvisible ), [ 0, 0.15, 0.15 ], [ 0, Math.PI / 2, 0 ]],
-			],
-			XZ: [
-				[ new Mesh( new BoxGeometry( 0.2, 0.2, 0.01 ), matInvisible ), [ 0.15, 0, 0.15 ], [ - Math.PI / 2, 0, 0 ]],
-			],
-			XYZ: [
-				[ new Mesh( new BoxGeometry( 0.2, 0.2, 0.2 ), matInvisible ), [ 0, 0, 0 ]],
-			]
+			// XY: [
+			// 	[ new Mesh( new BoxGeometry( 0.2, 0.2, 0.01 ), matInvisible ), [ 0.15, 0.15, 0 ]],
+			// ],
+			// YZ: [
+			// 	[ new Mesh( new BoxGeometry( 0.2, 0.2, 0.01 ), matInvisible ), [ 0, 0.15, 0.15 ], [ 0, Math.PI / 2, 0 ]],
+			// ],
+			// XZ: [
+			// 	[ new Mesh( new BoxGeometry( 0.2, 0.2, 0.01 ), matInvisible ), [ 0.15, 0, 0.15 ], [ - Math.PI / 2, 0, 0 ]],
+			// ],
+			// XYZ: [
+			// 	[ new Mesh( new BoxGeometry( 0.2, 0.2, 0.2 ), matInvisible ), [ 0, 0, 0 ]],
+			// ]
 		};
 
 		const helperScale = {
@@ -1407,9 +1407,46 @@ class TransformControlsGizmo extends Object3D {
 			if ( that.enabled && that.axis ) {
 
 				if ( handle.name === that.axis ) {
-
-					handle.material.color.setHex( 0xffff00 );
-					handle.material.opacity = 1.0;
+					if(that.mode === 'translate') {
+						that.gizmo['rotate'].traverse((child) => {
+							if(child instanceof Mesh) {
+								child.material.opacity = 0.2;
+								child.material.color.setHex(0x0A0A0A);
+							}
+						});
+						that.gizmo['scale'].traverse((child) => {
+							if(child instanceof Mesh) {
+								child.material.opacity = 0.2;
+								child.material.color.setHex(0x0A0A0A);
+							}
+						});
+					} else if(that.mode === 'rotate') {
+						that.gizmo['translate'].traverse((child) => {
+							if(child instanceof Mesh) {
+								child.material.opacity = 0.2;
+								child.material.color.setHex(0x0A0A0A);
+							}
+						});
+						that.gizmo['scale'].traverse((child) => {
+							if(child instanceof Mesh) {
+								child.material.opacity = 0.2;
+								child.material.color.setHex(0x0A0A0A);
+							}
+						});
+					} else if(that.mode === 'scale') {
+						that.gizmo['translate'].traverse((child) => {
+							if(child instanceof Mesh) {
+								child.material.opacity = 0.2;
+								child.material.color.setHex(0x0A0A0A);
+							}
+						});
+						that.gizmo['rotate'].traverse((child) => {
+							if(child instanceof Mesh) {
+								child.material.opacity = 0.2;
+								child.material.color.setHex(0x0A0A0A);
+							}
+						});
+					}
 
 				} else if ( that.axis.split( '' ).some( function ( a ) {
 
@@ -1420,6 +1457,9 @@ class TransformControlsGizmo extends Object3D {
 					handle.material.color.setHex( 0xffff00 );
 					handle.material.opacity = 1.0;
 
+				} else {
+					handle.material.color.setHex( 0x0A0A0A );
+					handle.material.opacity = 0.2;
 				}
 
 			}
@@ -1441,6 +1481,16 @@ class TransformControlsGizmo extends Object3D {
 		this.gizmo[ 'rotate' ].children.forEach((obj)=>{
 			handleFunc(obj, 'rotate')
 		})
+
+		// 是否要显示scale控制器
+		// todo: 处理操作scale时，操作space（world/local）的控制
+		// this.picker[ 'scale' ].children.forEach((obj)=>{
+		// 	handleFunc(obj, 'scale')
+		// })
+
+		// this.gizmo[ 'scale' ].children.forEach((obj)=>{
+		// 	handleFunc(obj, 'scale')
+		// })
 
 		// this.helper[ 'translate' ].children.forEach((obj)=>{
 		// 	handleFunc(obj, 'translate')
